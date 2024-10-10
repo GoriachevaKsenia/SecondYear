@@ -1,26 +1,28 @@
-
+#include <iostream>
+#include <algorithm>
+#include <cstring>
+#include <limits>
 template<typename T>
 class ArrayHandler {
 private:
     size_t _size;
     T* _array;
     size_t _count;
-    int Min;
-    int Max;
+    T Min;
+    T Max;
 public:
     ArrayHandler(size_t size = 10) {
         _size = size;
         _array = new T[_size];
         _count = 0;
-        Min = 10000000;
-        Max = -1;
+        Max = std::numeric_limits<T>::min();
+        Min = std::numeric_limits<T>::max();
     }
 
     void AppendElem(T elem) {
         if (_count == _size){
             T* array = new T[_size];
-            for(int i = 0; i < _size; i++)
-                array[i] = _array[i];
+            std::memcpy(array, _array, _count*sizeof(T));
             delete [] _array;
             _size++;
             _array = array;
@@ -52,5 +54,3 @@ public:
     }
 
 };
-
-//std::find(_array, _array+_count, elem)!=(_array +_count);
