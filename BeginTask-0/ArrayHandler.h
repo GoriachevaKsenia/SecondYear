@@ -11,7 +11,7 @@ private:
     T Min;
     T Max;
 public:
-    ArrayHandler(size_t size = 10) {
+    ArrayHandler(size_t size = 1000000) {
         _size = size;
         _array = new T[_size];
         _count = 0;
@@ -20,13 +20,6 @@ public:
     }
 
     void AppendElem(T elem) {
-        if (_count == _size){
-            T* array = new T[_size];
-            std::memcpy(array, _array, _count*sizeof(T));
-            delete [] _array;
-            _size++;
-            _array = array;
-        }
         _array[_count++] = elem;
         if(elem > Max)
             Max = elem;
