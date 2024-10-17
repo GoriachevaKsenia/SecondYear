@@ -6,13 +6,14 @@
 template<typename T>
 class ArrayHandler {
 private:
+    T* _array;
     size_t _size;
-    std::vector<T> _array;
     size_t _count;
     T Min;
     T Max;
 public:
-    ArrayHandler(size_t size = 10) {
+    ArrayHandler(size_t size = 10000000) {
+        _array = new T[size];
         _size = size;
         _count = 0;
         Max = std::numeric_limits<T>::min();
@@ -20,8 +21,7 @@ public:
     }
 
     void AppendElem(T elem) {
-       _array.push_back(elem);
-        _count++;
+       _array[_count++] = elem;
         if(elem > Max)
             Max = elem;
         if(elem < Min)
@@ -44,7 +44,7 @@ public:
     }
 
     ~ArrayHandler() {
-        _array.clear();
+        delete [] _array;
     }
 
 };
