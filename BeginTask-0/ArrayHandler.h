@@ -14,7 +14,7 @@ public:
         _array = new T[size];
         _size = size;
         _count = 0;
-        Max = 0;
+        Max = std::numeric_limits<T>::min();
         Min = std::numeric_limits<T>::max();
     }
 
@@ -27,10 +27,7 @@ public:
     }
 
     bool IsContains(T elem) {
-        for(int i = 0; i < _count; i++){
-            if(elem == _array[i]) return true;
-        }
-        return false;
+        return std::find(_array, _array+_count, elem)!=(_array +_count);
     }
 
     T GetMax() {
