@@ -1,23 +1,21 @@
 #include <iostream>
 #include <algorithm>
-#include <cstring>
 #include <limits>
-#include <vector>
 template<typename T>
 class ArrayHandler {
 private:
     T* _array;
     size_t _size;
     size_t _count;
-    int Min;
-    int Max;
+    T Min;
+    T Max;
 public:
     ArrayHandler(size_t size = 10000000) {
         _array = new T[size];
         _size = size;
         _count = 0;
         Max = 0;
-        Min = 1000000;
+        Min = std::numeric_limits<T>::max();
     }
 
     void AppendElem(T elem) {
