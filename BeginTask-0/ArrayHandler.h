@@ -12,7 +12,7 @@ private:
 public:
     ArrayHandler(size_t size = 10000000) {
         _array = new T[size];
-        _size = size;
+        //_size = size;
         _count = 0;
         Max = std::numeric_limits<T>::min();
         Min = std::numeric_limits<T>::max();
