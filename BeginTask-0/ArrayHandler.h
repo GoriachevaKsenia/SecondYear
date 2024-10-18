@@ -5,14 +5,12 @@ template<typename T>
 class ArrayHandler {
 private:
     T* _array;
-    size_t _size;
     size_t _count;
     T Min;
     T Max;
 public:
     ArrayHandler(size_t size = 10000000) {
         _array = new T[size];
-        //_size = size;
         _count = 0;
         Max = std::numeric_limits<T>::min();
         Min = std::numeric_limits<T>::max();
