@@ -4,7 +4,7 @@
 
 class BitField {
 private:
-    size_t _sizeBit;
+    size_t _sizeBit; // размер бит (пример: _memSize = 2, тогда _sizeBit = 2 * 16 = 32)
     uint16_t* _mem;
     size_t _memSize;
 
@@ -28,6 +28,6 @@ public:
     BitField operator~();
 
     ~BitField(){
-
+        delete [] _mem;
     }
 };
